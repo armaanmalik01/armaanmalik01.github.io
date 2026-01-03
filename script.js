@@ -27,7 +27,7 @@ function feedAll() {
 
         }
     );
-    const blob = URL.createObjectURL(fileInput.files[0]);
+    const blob = fileInput.files.length ? URL.createObjectURL(fileInput.files[0]) : ""
     SignOut.src = blob
 
     upload(JSON.stringify(data));
@@ -78,4 +78,5 @@ genbtn.addEventListener('click', () => {
     feedAll();
     // setTimeout(()=>donate(),2000)
 })
+
 
