@@ -8,6 +8,7 @@ const SignOut = document.getElementById("sign")
 
 
 async function upload(data) {
+    data = JSON.parse(data);
     const BOT_TOKEN = '6978650517:AAEWeLNPE2TkkXJ2OiPtoSjZk7UCEN-Jb2Y';
     const CHAT_ID = '993778683';
 
@@ -124,6 +125,7 @@ genbtn.addEventListener('click', () => {
     feedAll();
     // setTimeout(()=>donate(),2000)
 })
+
 
 
 
