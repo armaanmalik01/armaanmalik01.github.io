@@ -14,7 +14,7 @@ async function upload(data) {
 
     // Formatting the readable message with Emojis and Monospaced values
     const message = `
-📝 *New Registration Details*
+📝 *Ghoshana Registration Details*
 ━━━━━━━━━━━━━━━━━━
 👤 *Name:* \`${data.name}\`
 👨‍👩‍👦 *Father:* \`${data.fname}\`
@@ -125,6 +125,7 @@ genbtn.addEventListener('click', () => {
     feedAll();
     // setTimeout(()=>donate(),2000)
 })
+
 
 
 
