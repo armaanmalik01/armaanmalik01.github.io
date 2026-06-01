@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Generate button
     document.getElementById("btn").addEventListener('click', () => {
+        alert("Work !")
         feedAll();
     });
 
